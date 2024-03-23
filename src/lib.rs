@@ -11,6 +11,7 @@ pub struct ThreadPool {
 type Job = Box<dyn FnOnce() + Send + 'static>;
 
 impl ThreadPool {
+    //bonus implementation build
     pub fn build(size: usize) -> Result<ThreadPool, &'static str> {
         if size == 0 {
             return Err("Pool size cannot be zero");
