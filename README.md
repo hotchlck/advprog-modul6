@@ -103,4 +103,9 @@ menunjukkan bagaimana server single-threaded menangani permintaan secara serial.
 ThreadPool memungkinkan implementasi multithreading dalam aplikasi dengan menyediakan sekelompok Thread yang telah dibuat sebelumnya dan siap untuk menjalankan tugas. 
 Ini memfasilitasi pemrosesan simultan dari beberapa request: sementara satu Thread menangani satu request, Thread lainnya bisa bekerja pada request berikutnya, 
 memungkinkan aplikasi untuk mengelola beberapa request secara bersamaan dan meningkatkan throughput. 
-Namun, jumlah Thread yang ada dalam ThreadPool dibatasi—contohnya hanya empat Thread—untuk mencegah overloading sistem dan melindungi dari serangan DoS.
+Namun, jumlah Thread yang ada dalam ThreadPool dibatasi, untuk mencegah overloading sistem dan melindungi dari serangan DoS.
+
+## Bonus Reflection notes
+Pada langkah bonus, saya membuat metode ```build``` untuk meningkatkan fungsi metode ```new``` dalam menangani error. Biasanya metode ```new``` diharapkan tidak akan gagal dalam menangani error. 
+Namun, untuk mengatasi potensi kesalahan yang muncul saat ThreadPool dibuat tanpa ukuran (size 0), penggunaan metode build disarankan.
+Metode build ini dirancang untuk mengelola error dengan lebih efisien, mengembalikan Result yang berisi ThreadPool jika pembuatan berhasil, atau pesan kesalahan jika proses tersebut gagal
