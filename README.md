@@ -98,3 +98,9 @@ Ini menunjukkan keterbatasan server single-threaded, di mana request yang membut
 Dalam versi baru fungsi ```handle_connection```, ada penanganan khusus untuk request ke ```"/sleep"``` yang meniru request yang membutuhkan waktu lama untuk diproses dengan menambahkan jeda sepuluh detik. 
 Ketika dua jendela browser dibuka secara bersamaan, satu dengan alamat ```127.0.0.1/sleep``` dan yang lainnya dengan ```127.0.0.1```, server tidak akan memproses request kedua sampai jeda pada request pertama selesai, 
 menunjukkan bagaimana server single-threaded menangani permintaan secara serial.
+
+## Commit 5 Reflection notes
+ThreadPool memungkinkan implementasi multithreading dalam aplikasi dengan menyediakan sekelompok Thread yang telah dibuat sebelumnya dan siap untuk menjalankan tugas. 
+Ini memfasilitasi pemrosesan simultan dari beberapa request: sementara satu Thread menangani satu request, Thread lainnya bisa bekerja pada request berikutnya, 
+memungkinkan aplikasi untuk mengelola beberapa request secara bersamaan dan meningkatkan throughput. 
+Namun, jumlah Thread yang ada dalam ThreadPool dibatasi—contohnya hanya empat Thread—untuk mencegah overloading sistem dan melindungi dari serangan DoS.
